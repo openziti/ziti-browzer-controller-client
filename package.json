@@ -1,0 +1,46 @@
+{
+  "name": "@openziti/ziti-browzer-edge-client",
+  "main": "./dist/ziti-browzer-edge-client.js",
+  "files": [
+    "dist"
+  ],
+  "version": "0.1.0",
+  "description": "A Swagger codegen for JavaScript",
+  "scripts": {
+    "clean": "rm -rf dist lib",
+    "fetchYaml": "node src/fetchYaml.js",
+    "ymlToJson": "node src/ymlToJson.js --input lib/client.yml --output lib/client.json",
+    "clientGenerator": "node src/clientGenerator.js",
+    "build": "npm-run-all clean fetchYaml ymlToJson clientGenerator"
+  },
+  "bugs": {
+    "url": "https://github.com/openziti/ziti-browzer-edge-client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/openziti/ziti-browzer-edge-client.git"
+  },
+  "keywords": [
+    "swagger",
+    "rest"
+  ],
+  "author": {
+    "name": "NetFoundry",
+    "url": "http://netfoundry.io",
+    "email": "openziti@netfoundry.io"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/openziti/ziti-browzer-edge-client",
+  "devDependencies": {
+    "js-beautify": "^1.14.0",
+    "jshint": "^2.13.4",
+    "mustache": "^4.2.0",
+    "npm-run-all": "^4.1.5",
+    "request": "^2.88.2",
+    "yaml": "^1.10.2",
+    "yargs": "^17.3.1"
+  },
+  "dependencies": {
+    "q": "^1.5.1"
+  }
+}
