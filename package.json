@@ -59,7 +59,7 @@
     "del": "^6.0.0",
     "globby": "^11.0.1",
     "gulp": "^4.0.2",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^8.0.0",
     "js-beautify": "^1.14.0",
     "jshint": "^2.13.4",
     "mustache": "^4.2.0",
