@@ -14,13 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-var request = require("request");
-var fs = require('fs');
 
-const CLIENT_SPEC = 'https://raw.githubusercontent.com/openziti/edge/main/specs/client.yml';
+const globby = require('globby');
 
-request(CLIENT_SPEC, function(err, res, body) {
-    fs.mkdirSync('spec');
-    fs.writeFileSync("spec/client.yml", body);
-});
-  
+const taskFiles = globby.sync('./gulp-tasks/*.js');
+
+for (const taskFile of taskFiles) {
+  const taskDefinitions = require(taskFile);
+  for (const [name, task] of Object.entries(taskDefinitions)) {
+    if (name === 'functions') {
+      continue;
+    }
+    if (name in module.exports) {
+      throw new Error(
+        `Duplicate task definition: ${name} defined in` +
+          ` ${taskFile} conflicts with another task.`,
+      );
+    }
+    module.exports[name] = task;
+  }
+}
