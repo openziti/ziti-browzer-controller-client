@@ -50,7 +50,7 @@
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-multi-entry": "^4.0.0",
     "@rollup/plugin-node-resolve": "^11.2.1",
-    "@rollup/plugin-replace": "^2.4.1",
+    "@rollup/plugin-replace": "^4.0.0",
     "@types/node": "^17.0.21",
     "@types/superagent": "^4.1.15",
     "babel-plugin-dynamic-import-node": "^2.3.3",
