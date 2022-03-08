@@ -14,13 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-var request = require("request");
-var fs = require('fs');
+import ZitiEdgeClient from "../ziti-browzer-edge-client.js";
 
-const CLIENT_SPEC = 'https://raw.githubusercontent.com/openziti/edge/main/specs/client.yml';
-
-request(CLIENT_SPEC, function(err, res, body) {
-    fs.mkdirSync('spec');
-    fs.writeFileSync("spec/client.yml", body);
-});
-  
+export {
+    ZitiEdgeClient
+};
