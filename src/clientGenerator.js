@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 var fs = require('fs');
+var path = require('path');
 var CodeGen = require('./codegen.js').CodeGen;
 
 var file = 'spec/client.json';
@@ -22,7 +23,17 @@ var json = fs.readFileSync(file, 'UTF-8');
 json = json.trim(); 
 var swagger = JSON.parse(json);
 
-fs.mkdirSync('dist');
+const mkdirsSync = function(dirname) {
+    if (fs.existsSync(dirname)) {
+        return true;
+    }
+    if (mkdirsSync(path.dirname(dirname))) {
+      fs.mkdirSync(dirname);
+      return true;
+    }
+}
+   
+mkdirsSync('dist');
 
 // For now, we skip direct auso-generation of JS.  Instead, we will 
 // auto-generate typescript and then transpile that into JS.
