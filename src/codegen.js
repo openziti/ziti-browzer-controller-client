@@ -16,13 +16,18 @@ limitations under the License.
 
 'use strict';
 
-var fs = require('fs');
-var Mustache = require('mustache');
-var beautify = require('js-beautify').js_beautify;
-var lint = require('jshint').JSHINT;
-var _ = require('lodash');
-var ts = require('./typescript');
-var flow = require('./flow');
+import fs from 'fs';
+import Mustache from 'mustache';
+import beautify from 'js-beautify';
+import lint from 'jshint';
+import _ from 'lodash';
+import * as ts from './typescript.js';
+import * as flow from './flow.js';
+
+import path from 'path';
+import {fileURLToPath} from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 var normalizeName = function(id) {
     return id.replace(/\.|\-|\{|\}|\s/g, '_');
@@ -189,6 +194,10 @@ var getViewForSwagger2 = function(opts, type){
                 }
                 parameter.tsType = ts.convertType(parameter);
                 parameter.flowType = flow.convertType(parameter);
+                if (parameter.type === 'integer') {
+                    parameter.type = 'number';
+                }
+        
                 parameter.cardinality = parameter.required ? '' : '?';
                 method.parameters.push(parameter);
             });
@@ -265,7 +274,7 @@ var getCode = function(opts, type) {
         lintOptions.esnext = true;
     }
 
-    if(type === 'typescript' || type === 'flow') {
+    if(type === 'javascript' || type === 'typescript' || type === 'flow') {
         opts.lint = false;
     }
 
@@ -284,14 +293,19 @@ var getCode = function(opts, type) {
     }
 };
 
-exports.CodeGen = {
-    getTypescriptCode: function(opts){
-        if (opts.swagger.swagger !== '2.0') {
-            throw 'Typescript is only supported for Swagger 2.0 specs.';
-        }
-        return getCode(opts, 'typescript');
-    },
-    getJavaScriptCode: function(opts){
-        return getCode(opts, 'javascript');
+var getTypescriptCode = function(opts){
+    if (opts.swagger.swagger !== '2.0') {
+        throw 'Typescript is only supported for Swagger 2.0 specs.';
     }
+    return getCode(opts, 'typescript');
+};
+
+var getJavaScriptCode = function(opts){
+    return getCode(opts, 'javascript');
+};
+
+
+export  {
+    getTypescriptCode,
+    getJavaScriptCode,
 };

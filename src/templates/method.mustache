@@ -7,7 +7,7 @@
     {{^isSingleton}} * @param {{=<% %>=}}{<%&type%>}<%={{ }}=%> parameters.{{&camelCaseName}} - {{&description}}{{/isSingleton}}
 {{/parameters}}
  */
- {{&className}}.prototype.{{&methodName}} = function(parameters){
+{{&methodName}}(parameters){
     if(parameters === undefined) {
         parameters = {};
     }
