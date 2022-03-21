@@ -14,9 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-var fs = require('fs');
-var path = require('path');
-var CodeGen = require('./codegen.js').CodeGen;
+import fs from 'fs';
+import path from 'path';
+import {getJavaScriptCode} from './codegen.js';
 
 var file = 'spec/client.json';
 var json = fs.readFileSync(file, 'UTF-8');
@@ -35,25 +35,15 @@ const mkdirsSync = function(dirname) {
    
 mkdirsSync('dist');
 
-// For now, we skip direct auso-generation of JS.  Instead, we will 
-// auto-generate typescript and then transpile that into JS.
-// This approach allows TS-based environments to consume this
-// module.
+// Auto-generation the JS.  A subsequent build step will run the  
+// TS compiler and it will generate the associated d.ts file to
+// facilitate consumption of this module from TypeScript.
 //
-//
-// var clientSourceCode = CodeGen.getJavaScriptCode(
-//     { 
-//         className: 'ZitiEdgeClient', 
-//         swagger: swagger 
-//     }
-// );
-// fs.writeFileSync("dist/ziti-browzer-edge-client.js", clientSourceCode);
-
-var clientSourceCode = CodeGen.getTypescriptCode(
+var clientSourceCode = getJavaScriptCode(
     { 
-        className: 'ZitiEdgeClient', 
+        className: 'ZitiBrowzerEdgeClient', 
         swagger: swagger 
     }
 );
+fs.writeFileSync("dist/index.js", clientSourceCode);
 
-fs.writeFileSync("dist/ziti-browzer-edge-client.ts", clientSourceCode);

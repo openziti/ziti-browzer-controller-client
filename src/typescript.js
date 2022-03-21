@@ -16,7 +16,7 @@ limitations under the License.
 
 'use strict';
 
-var _ = require('lodash');
+import _ from 'lodash';
 
 /**
  * Recursively converts a swagger type description into a typescript type, i.e., a model for our mustache
@@ -100,4 +100,6 @@ function convertType(swaggerType, swagger) {
     return typespec;
 }
 
-module.exports.convertType = convertType;
+export {
+    convertType
+};

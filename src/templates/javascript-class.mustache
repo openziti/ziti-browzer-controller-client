@@ -16,7 +16,7 @@ limitations under the License.
 
 /*jshint esversion: 6 */
 /*global fetch, btoa */
-import Q from 'q';
+import * as Q from 'q';
 
 /**
  * {{&title}} - auto-generated from Swagger Spec version {{&version}}
@@ -26,10 +26,11 @@ import Q from 'q';
  * @param {string} [domainOrOptions.domain] - The project domain
  * @param {object} [domainOrOptions.token] - auth token - object with value property and optional headerOrQueryName and isQuery properties
  */
-let {{&className}} = (function(){
+class {{&className}} {
     'use strict';
 
-    function {{&className}}(options){
+    //function {{&className}}(options){
+    constructor(options) {
         let domain = (typeof options === 'object') ? options.domain : options;
         this.domain = domain ? domain : '{{&domain}}';
         if(this.domain.length === 0) {
@@ -48,7 +49,7 @@ let {{&className}} = (function(){
         {{/isSecure}}
     }
 
-    function serializeQueryParams(parameters) {
+    serializeQueryParams(parameters) {
         let str = [];
         for (let p in parameters) {
             if (parameters.hasOwnProperty(p)) {
@@ -58,7 +59,7 @@ let {{&className}} = (function(){
         return str.join('&');
      }
 
-     function mergeQueryParams(parameters, queryParameters) {
+    mergeQueryParams(parameters, queryParameters) {
         if (parameters.$queryParameters) {
             Object.keys(parameters.$queryParameters)
                   .forEach(function(parameterName) {
@@ -82,7 +83,7 @@ let {{&className}} = (function(){
       * @param {object} form - form data object
       * @param {object} deferred - promise object
       */
-    {{&className}}.prototype.request = function(method, url, parameters, body, headers, queryParameters, form, deferred){
+    request(method, url, parameters, body, headers, queryParameters, form, deferred){
         const queryParams = queryParameters && Object.keys(queryParameters).length ? serializeQueryParams(queryParameters) : null ;
         const urlWithParams = url + (queryParams ? '?' + queryParams : '');
 
@@ -113,7 +114,7 @@ let {{&className}} = (function(){
             * @param {string} headerOrQueryName - the header or query name to send the token at
             * @param {boolean} isQuery - true if send the token as query param, otherwise, send as header param
             */
-            {{&className}}.prototype.setToken = function (value, headerOrQueryName, isQuery) {
+            setToken(value, headerOrQueryName, isQuery) {
                 this.token.value = value;
                 this.token.headerOrQueryName = headerOrQueryName;
                 this.token.isQuery = isQuery;
@@ -128,7 +129,7 @@ let {{&className}} = (function(){
             * @param {string} headerOrQueryName - the header or query name to send the apiKey at
             * @param {boolean} isQuery - true if send the apiKey as query param, otherwise, send as header param
             */
-            {{&className}}.prototype.setApiKey = function (value, headerOrQueryName, isQuery) {
+            setApiKey(value, headerOrQueryName, isQuery) {
                 this.apiKey.value = value;
                 this.apiKey.headerOrQueryName = headerOrQueryName;
                 this.apiKey.isQuery = isQuery;
@@ -142,7 +143,7 @@ let {{&className}} = (function(){
             * @param {string} username
             * @param {string} password
             */
-            {{&className}}.prototype.setBasicAuth = function (username, password) {
+            setBasicAuth(username, password) {
                 this.basic.username = value;
                 this.basic.password = password;
             };
@@ -153,7 +154,7 @@ let {{&className}} = (function(){
         * @name {{&className}}#setAuthHeaders
         * @param {object} headerParams - headers object
         */
-        {{&className}}.prototype.setAuthHeaders = function (headerParams) {
+        setAuthHeaders(headerParams) {
             let headers = headerParams ? headerParams : {};
         {{#isSecureToken}}
             if (!this.token.isQuery) {
@@ -182,7 +183,8 @@ let {{&className}} = (function(){
         {{> method}}
     {{/methods}}
 
-    return {{&className}};
-})();
+}
 
-exports.{{&className}} = {{&className}};
+export {
+    {{&className}}
+}

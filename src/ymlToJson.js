@@ -17,8 +17,11 @@ limitations under the License.
 */
 
 
-const fs = require('fs')
-const YAML = require('yaml')
+import fs from 'fs';
+import YAML from 'yaml';
+import _yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+const yargs = _yargs(hideBin(process.argv));
 
 const formats = {
   es6: {
@@ -81,8 +84,8 @@ const options = {
   }
 }
 
-const yargs = require('yargs')
-  .command(
+yargs.
+  command(
     '$0 [input]',
     'Convert between YAML and JSON, optionally wrapping output as a JS module'
   )
