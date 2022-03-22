@@ -18,6 +18,17 @@ limitations under the License.
 /*global fetch, btoa */
 import * as Q from 'q';
 
+Promise.deferred = function() {
+    var result = {};
+    result.promise = new Promise(function(resolve, reject) {
+        result.resolve = resolve;
+        result.reject = reject;
+    });
+    return result;
+};
+
+var zitiDeferred = new Promise.deferred();
+
 /**
  * {{&title}} - auto-generated from Swagger Spec version {{&version}}
  *
@@ -27,9 +38,7 @@ import * as Q from 'q';
  * @param {object} [domainOrOptions.token] - auth token - object with value property and optional headerOrQueryName and isQuery properties
  */
 class {{&className}} {
-    'use strict';
 
-    //function {{&className}}(options){
     constructor(options) {
         let domain = (typeof options === 'object') ? options.domain : options;
         this.domain = domain ? domain : '{{&domain}}';
@@ -47,6 +56,7 @@ class {{&className}} {
                 this.basic = (typeof options === 'object') ? (options.basic ? options.basic : {}) : {};
             {{/isSecureBasic}}
         {{/isSecure}}
+        this.logger = (typeof options === 'object') ? (options.logger ? options.logger : function() { /* NOP */ }) : function() { /* NOP */ };
     }
 
     serializeQueryParams(parameters) {

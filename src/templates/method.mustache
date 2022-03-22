@@ -11,7 +11,7 @@
     if(parameters === undefined) {
         parameters = {};
     }
-    {{#isES6}}let{{/isES6}}{{^isES6}}var{{/isES6}} deferred = {{#isNode}}Q{{/isNode}}{{^isNode}}$q{{/isNode}}.defer();
+    {{#isES6}}let{{/isES6}}{{^isES6}}var{{/isES6}} deferred = zitiDeferred;
     {{#isES6}}let{{/isES6}}{{^isES6}}var{{/isES6}} domain = this.domain,  path = '{{&path}}';
     {{#isES6}}let{{/isES6}}{{^isES6}}var{{/isES6}} body = {}, queryParameters = {}, headers = {}, form = {};
 
@@ -88,7 +88,7 @@
         {{/required}}
  
     {{/parameters}}
-    queryParameters = mergeQueryParams(parameters, queryParameters);
+    queryParameters = this.mergeQueryParams(parameters, queryParameters);
 
     this.request('{{method}}', domain + path, parameters, body, headers, queryParameters, form, deferred);
 
