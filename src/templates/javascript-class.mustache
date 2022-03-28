@@ -103,7 +103,13 @@ class {{&className}} {
 
         this.logger.trace('ZitiBrowzerEdgeClient: doing fetch to: ', urlWithParams);
 
-        fetch(urlWithParams, {
+        /**
+         * This code runs in both the Page and the ServiceWorker,
+         * so use the proper 'fetch' function depending on environment.
+         */
+        let fetchFunc = (typeof _ziti_realFetch !== 'undefined') ? _ziti_realFetch : fetch;
+
+        fetchFunc(urlWithParams, {
             method,
             headers,
             body: JSON.stringify(body)
