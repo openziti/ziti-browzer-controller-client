@@ -29,6 +29,7 @@
 ---
 [![Build](https://github.com/openziti/ziti-browzer-edge-client/workflows/Build/badge.svg?branch=main)]()
 [![CodeQL](https://github.com/openziti/ziti-browzer-edge-client/workflows/CodeQL/badge.svg?branch=main)]()
+[![Known Vulnerabilities](https://snyk-widget.herokuapp.com/badge/npm/%40openziti%2Fziti-browzer-edge-client/badge.svg)](https://snyk-widget.herokuapp.com/badge/npm/%40openziti%2Fziti-browzer-edge-client/badge.svg)
 [![Issues](https://img.shields.io/github/issues-raw/openziti/ziti-browzer-edge-client)]()
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![LOC](https://img.shields.io/tokei/lines/github/openziti/ziti-browzer-sw)]()
