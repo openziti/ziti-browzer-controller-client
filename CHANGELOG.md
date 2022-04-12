@@ -1,3 +1,7 @@
+## [0.1.19](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.1.18...v0.1.19) (2022-04-12)
+
+
+
 ## [0.1.18](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.1.17...v0.1.18) (2022-04-12)
 
 
