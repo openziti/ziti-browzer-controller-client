@@ -1,3 +1,12 @@
+# [0.2.0](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.1.19...v0.2.0) (2022-05-02)
+
+
+### Features
+
+* add 'Authorization: Bearer ...' header during /authenticate requests ([#31](https://github.com/openziti/ziti-browzer-edge-client/issues/31)) ([d2da16a](https://github.com/openziti/ziti-browzer-edge-client/commit/d2da16a7b44f8f040f314660408f57e45b4170e8))
+
+
+
 ## [0.1.19](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.1.18...v0.1.19) (2022-04-12)
 
 
