@@ -45,6 +45,8 @@ class {{&className}} {
             {{/isSecureBasic}}
         {{/isSecure}}
         this.logger = (typeof options === 'object') ? (options.logger ? options.logger : function() { /* NOP */ }) : function() { /* NOP */ };
+        this.token_type = (typeof options === 'object') ? (options.token_type ? options.token_type : null) : null;
+        this.access_token = (typeof options === 'object') ? (options.access_token ? options.access_token : null) : null;
     }
 
     serializeQueryParams(parameters) {
@@ -174,6 +176,9 @@ class {{&className}} {
         {{#isSecureApiKey}}
             if (!this.apiKey.isQuery && this.apiKey.headerOrQueryName) {
                 headers[this.apiKey.headerOrQueryName] = this.apiKey.value;
+            }
+            if ((null !== this.token_type) && (null !== this.access_token)) {
+                headers["Authorization"] = [this.token_type + ' ' + this.access_token];
             }
         {{/isSecureApiKey}}
         {{#isSecureBasic}}
