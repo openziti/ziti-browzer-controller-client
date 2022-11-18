@@ -99,6 +99,19 @@ class {{&className}} {
          */
         let fetchFunc = (typeof _ziti_realFetch !== 'undefined') ? _ziti_realFetch : fetch;
 
+        /**
+         *  Some web apps (i.e. Jenkins) use Prototype.js, which does some monkey-patching
+         *  of certain JS primitives (like Array.toJSON).  The Prototype.js logic serializes
+         *  JSON array in a malformed way, which will cause POST body data to be incorrect,
+         *  which causes REST calls to teh Controller to fail.  We work around this issue by
+         *  taking Prototype.js out of the picture for the duration of our REST call.
+         */
+        let _toJSON = undefined;
+        if (Array.prototype.toJSON) {
+            _toJSON = Array.prototype.toJSON;
+            delete Array.prototype.toJSON;
+        }
+
         fetchFunc(urlWithParams, {
             method,
             headers,
@@ -110,6 +123,13 @@ class {{&className}} {
         }).catch((error) => {
             deferred.reject(error);
         });
+
+        /**
+         *  Restore Prototype.js monkey-patch that was (potentially) saved above.
+         */
+        if (_toJSON) {
+            Array.prototype.toJSON = _toJSON;
+        }
     };
 
     {{#isSecure}}
