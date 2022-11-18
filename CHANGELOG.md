@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.2.0...v0.3.0) (2022-11-18)
+
+
+### Features
+
+* workaround the Prototype.js monkey-patch of Array.toJSON ([#48](https://github.com/openziti/ziti-browzer-edge-client/issues/48)) ([91fca01](https://github.com/openziti/ziti-browzer-edge-client/commit/91fca01d89e21339f1ce290f90f3114374ff50c7))
+
+
+
 # [0.2.0](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.1.19...v0.2.0) (2022-05-02)
 
 
