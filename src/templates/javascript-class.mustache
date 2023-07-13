@@ -115,6 +115,7 @@ class {{&className}} {
         fetchFunc(urlWithParams, {
             method,
             headers,
+            keepalive: true,
             body: JSON.stringify(body)
         }).then((response) => {
             return response.json();
