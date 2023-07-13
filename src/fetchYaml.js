@@ -20,7 +20,7 @@ import fs from 'fs';
 /**
  *  This is the source of the Swagger Spec we use to auto-generate the edge client
  */
-const CLIENT_SPEC = 'https://raw.githubusercontent.com/openziti/edge/main/specs/client.yml';
+const CLIENT_SPEC = 'https://raw.githubusercontent.com/openziti/edge-api/main/client.yml';
 
 
 request(CLIENT_SPEC, function(err, res, body) {
