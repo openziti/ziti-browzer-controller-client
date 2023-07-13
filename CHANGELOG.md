@@ -1,3 +1,12 @@
+## [0.6.2](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.6.1...v0.6.2) (2023-07-13)
+
+
+### Bug Fixes
+
+* use keepAlive on all requests ([#57](https://github.com/openziti/ziti-browzer-edge-client/issues/57)) ([acd0ae4](https://github.com/openziti/ziti-browzer-edge-client/commit/acd0ae49b03314a9c8c414a3539612dc5aab259f))
+
+
+
 ## [0.6.1](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.6.0...v0.6.1) (2023-03-02)
 
 
