@@ -1,3 +1,12 @@
+# [0.7.0](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.6.2...v0.7.0) (2024-09-09)
+
+
+### Features
+
+* regenerate the client using latest edge-api spec ([#75](https://github.com/openziti/ziti-browzer-edge-client/issues/75)) ([31d064f](https://github.com/openziti/ziti-browzer-edge-client/commit/31d064fc6ba0ad6df0bd1dc901ebba34d481a511))
+
+
+
 ## [0.6.2](https://github.com/openziti/ziti-browzer-edge-client/compare/v0.6.1...v0.6.2) (2023-07-13)
 
 
